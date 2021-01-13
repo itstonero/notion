@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useContext, useState } from "react"
+import { ProfileContext } from "./context/profileContext";
+import Profiles from "./components/ProfileTable";
+import Search from "./components/SearchProfiles";
+import Sorter from "./components/SortTable";
 
-function App() {
+const httpClient = require("node-fetch");
+
+export default function App() 
+{
+  const { profileActions } = useContext(ProfileContext);
+  const [ retryDownload, toggleRetryDownload ] = useState(true);
+
+  const retreiveProfiles = () => 
+  {
+      httpClient("http://api.enye.tech/v1/challenge/records")
+      .then(response => response.json())
+      .then(data => profileActions.store(data.records.profiles))
+      .catch(error => setTimeout(() => toggleRetryDownload(!retryDownload), 10000))
+  }
+  
+  //eslint-disable-next-line
+  useEffect(retreiveProfiles, [retryDownload]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+        <Search /> <Sorter /> <Profiles />
+      </div>
   );
 }
-
-export default App;

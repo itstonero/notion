@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+import { ProfileProvider } from './context/profileContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ProfileProvider>
+      <App />
+    </ProfileProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
