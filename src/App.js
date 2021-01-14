@@ -3,12 +3,13 @@ import { ProfileContext } from "./context/profileContext";
 import Profiles from "./components/ProfileTable";
 import Search from "./components/SearchProfiles";
 import Sorter from "./components/SortTable";
+import LoadingScreen from "./components/LoadingScreen"
 
 const httpClient = require("node-fetch");
 
 export default function App() 
 {
-  const { profileActions } = useContext(ProfileContext);
+  const { profileState, profileActions } = useContext(ProfileContext);
   const [ retryDownload, toggleRetryDownload ] = useState(true);
 
   const retreiveProfiles = () => 
@@ -22,9 +23,14 @@ export default function App()
   //eslint-disable-next-line
   useEffect(retreiveProfiles, [retryDownload]);
 
-  return (
-      <div>
-        <Search /> <Sorter /> <Profiles />
-      </div>
-  );
+  if(profileState.all)
+  {
+    return <div>
+              <Search /> 
+              <Sorter /> 
+              <Profiles />
+          </div>
+  }
+
+  return <LoadingScreen />
 }

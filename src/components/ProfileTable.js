@@ -1,7 +1,6 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { ProfileContext } from "../context/profileContext";
-import { LinearProgress } from "@material-ui/core";
 
 const columns = 
 [
@@ -22,19 +21,14 @@ const columns =
 export default function ProfileTable() 
 {
     const { profileState } = React.useContext(ProfileContext);
-    if(profileState.all)
-    {
-        return (
-          <div style={{ height: 1200, width: "95%", margin: "10px"}}>
-            <DataGrid
-              rows={profileState.match.map((x, i) => ({ ...x, id: i }))}
-              columns={columns}
-              pageSize={20}
-              checkboxSelection={false}
-            />
-          </div>
-        );
-    }
-
-    return <LinearProgress style={{ margin: "100px" }}/>
+    return (
+      <div style={{ height: 1200, width: "95%", margin: "10px"}}>
+        <DataGrid
+          rows={profileState.match.map((x, i) => ({ ...x, id: i }))}
+          columns={columns}
+          pageSize={20}
+          checkboxSelection={false}
+        />
+      </div>
+    );
 }

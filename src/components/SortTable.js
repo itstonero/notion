@@ -4,7 +4,7 @@ import { ProfileContext } from '../context/profileContext';
 
 export default function SortingBar()
 {
-    const { profileActions, profileState } = useContext(ProfileContext);
+    const { profileActions } = useContext(ProfileContext);
     const [ state, setState ] = useState({search: "", seive: ""});
 
     const seiveFurther = (event) => 
@@ -19,29 +19,23 @@ export default function SortingBar()
         profileActions.searchFullName(event.target.value);
     }
 
-    if(profileState.all)
-    {
-        return <div style={{ width: "95%", margin: "10px", display: "flex", justifyContent: "flex-end" }}>
-            <TextField
-                label="Name"
-                placeholder="Enter Name"
-                name = "FirstName"
-                margin="dense"
-                variant="filled"
-                value = { state.search }
-                onChange = {processSearch}
-            />
-            <TextField
-                label="Credit Card Number"
-                placeholder="Enter Credit Card Number"
-                name = "CreditCardNumber"
-                margin="dense"
-                variant="filled"
-                value = {state.seive}
-                onChange = {seiveFurther}
-            />
-        </div>
-    }
+    return <div style={{ width: "95%", margin: "10px", display: "flex", justifyContent: "flex-end" }}>
+        <TextField
+            placeholder="Filter By Name"
+            name = "FirstName"
+            margin="dense"
+            variant="filled"
+            value = { state.search }
+            onChange = { processSearch }
+        />
+        <TextField
+            placeholder="Filter By Card Number"
+            name = "CreditCardNumber"
+            margin="dense"
+            variant="filled"
+            value = {state.seive}
+            onChange = {seiveFurther}
+        />
+    </div>
 
-    return <></>
 }
