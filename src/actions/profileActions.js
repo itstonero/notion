@@ -2,3 +2,5 @@ export const SEARCH_PROFILES = "SEARCH";
 export const SEIVE_PROFILES = "SEIVE";
 export const SAVE_PROFILES = "SAVE";
 export const SEARCH_FULLNAME = "SEARCH_FULLNAME";
+export const NEXT_PROFILES = "NEXT_PROFILES";
+export const PREVIOUS_PROFILES = "PREVIOUS_PROFILES";

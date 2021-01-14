@@ -2,8 +2,8 @@ import { useEffect, useContext, useState } from "react"
 import { ProfileContext } from "./context/profileContext";
 import Profiles from "./components/ProfileTable";
 import Search from "./components/SearchProfiles";
-import Sorter from "./components/SortTable";
 import LoadingScreen from "./components/LoadingScreen"
+import Paginator from "./components/Paginator";
 
 const httpClient = require("node-fetch");
 
@@ -27,7 +27,7 @@ export default function App()
   {
     return <div>
               <Search /> 
-              <Sorter /> 
+              <Paginator />
               <Profiles />
           </div>
   }

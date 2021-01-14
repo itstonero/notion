@@ -5,11 +5,14 @@ import App from './App';
 
 import reportWebVitals from './reportWebVitals';
 import { ProfileProvider } from './context/profileContext';
+import { ChakraProvider } from '@chakra-ui/react';
 
 ReactDOM.render(
   <React.StrictMode>
     <ProfileProvider>
-      <App />
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
     </ProfileProvider>
   </React.StrictMode>,
   document.getElementById('root')

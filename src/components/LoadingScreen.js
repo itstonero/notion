@@ -1,4 +1,4 @@
-import { Box, forwardRef, ChakraProvider, Container } from "@chakra-ui/react"
+import { Box, forwardRef, Container } from "@chakra-ui/react"
 import { motion, isValidMotionProp } from "framer-motion"
 
 // 1. Create a custom motion component from Box
@@ -15,7 +15,6 @@ const MotionBox = motion.custom(
 // 2. You'll get access to `motion` and `chakra` props in `MotionBox`
 export default function LoadingScreen() {
   return (
-    <ChakraProvider>
       <Container
         h="100vh"
         d="flex"
@@ -50,6 +49,5 @@ export default function LoadingScreen() {
           display="flex"
         />
       </Container>
-    </ChakraProvider>
   )
 }

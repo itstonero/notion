@@ -1,12 +1,12 @@
 import { createContext, useReducer } from "react";
 import { ProfileReducer } from "../reducer/profileReducer";
-import { SAVE_PROFILES, SEIVE_PROFILES, SEARCH_PROFILES, SEARCH_FULLNAME } from "../actions/profileActions";
+import { SAVE_PROFILES, SEIVE_PROFILES, SEARCH_PROFILES, SEARCH_FULLNAME, PREVIOUS_PROFILES, NEXT_PROFILES } from "../actions/profileActions";
 
 const ProfileContext = createContext();
 
 const ProfileProvider = (props) => 
 {
-    const [profileState, dispatch] = useReducer(ProfileReducer, {all: null, match:null, search: null});
+    const [profileState, dispatch] = useReducer(ProfileReducer, {all: null, match:null, search: null, index:0, size:0});
 
     const profileActions = 
     {
@@ -25,6 +25,14 @@ const ProfileProvider = (props) =>
         searchFullName: (payload) => 
         {
             dispatch({type: SEARCH_FULLNAME, payload})
+        },
+        nextResult: () => 
+        {
+            dispatch({type: NEXT_PROFILES});
+        },
+        previousResult: () => 
+        {
+            dispatch({type: PREVIOUS_PROFILES});
         }
     }
 
