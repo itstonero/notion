@@ -14,7 +14,7 @@ export default function App()
 
   const retreiveProfiles = () => 
   {
-      httpClient("https://api.enye.tech/v1/challenge/records")
+      httpClient("http://api.enye.tech/v1/challenge/records")
       .then(response => response.json())
       .then(jsonData => profileActions.store(jsonData.records.profiles))
       .catch(error => setTimeout(() => toggleRetryDownload(!retryDownload), 10000))
