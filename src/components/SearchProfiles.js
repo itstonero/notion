@@ -8,22 +8,20 @@ export default function SearchBar()
     const { profileActions } = useContext(ProfileContext);
     
     const processSearch = (event) => profileActions.searchFullName(event.target.value);
+    const filterSearch = (event) => profileActions.search(event.target.name, event.target.value);
+    const seiveFurther = (event) =>  profileActions.seive(event.target.name, event.target.value);
     
-    const seiveFurther = (event) => 
-    {
-        profileActions.seive(event.target.name, event.target.value);
-    }
 
     return <div style={{width: "95%", margin: "10px"}}>
         <InputGroup>
             <InputLeftElement pointerEvents="none" children={<SearchIcon color="gray.300" />} />
             <Input placeholder="Enter Patient Name" size="lg" onChange={processSearch}/>
         </InputGroup>
+        
         <HStack>
-                
             <InputGroup>
                 <InputLeftElement pointerEvents="none" children={<HamburgerIcon color="gray.300" />} />
-                <Input placeholder="Filter by Name" size="lg" onChange={processSearch}/>
+                <Input name="Email" placeholder="Filter by Email" size="lg" onChange={filterSearch}/>
             </InputGroup>
 
             <InputGroup>

@@ -25,7 +25,7 @@ export default function Paginator() {
       >
         <ArrowLeftIcon />{" "}
       </Button>
-      <Text fontSize="md">
+      <Text fontSize="lg">
         {profileState.index}/{profileState.size}
       </Text>
       <Button

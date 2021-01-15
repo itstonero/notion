@@ -7,7 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import {Text} from "@chakra-ui/react";
 import { ProfileContext } from "../context/profileContext";
+import { WarningIcon } from "@chakra-ui/icons";
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -43,7 +45,10 @@ export default function ProfileTable() {
 
   if(data.length === 0)
   {
-    return <h3 style={{align:"center"}}> No Matching Result </h3>
+    
+    return <Text fontSize="xl" as="i" margin="100px" >
+            <WarningIcon color="red.500"/> {" "} No Matching Result
+          </Text>
   }
 
   return (
