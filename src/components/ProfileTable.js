@@ -45,7 +45,6 @@ export default function ProfileTable() {
 
   if(data.length === 0)
   {
-    
     return <Text fontSize="xl" as="i" margin="100px" >
             <WarningIcon color="red.500"/> {" "} No Matching Result
           </Text>
@@ -60,7 +59,7 @@ export default function ProfileTable() {
             <StyledTableCell>Last Name</StyledTableCell>
             <StyledTableCell>Gender</StyledTableCell>
             <StyledTableCell>Username</StyledTableCell>
-            <StyledTableCell>PhoneNumber</StyledTableCell>
+            <StyledTableCell>Phone Number</StyledTableCell>
             <StyledTableCell>Payment Method</StyledTableCell>
             <StyledTableCell>Card Number</StyledTableCell>
             <StyledTableCell>Card Type</StyledTableCell>
